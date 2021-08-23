@@ -12,9 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SignUpController {
 
-    @RequestMapping(path = "/sign-up", method = RequestMethod.POST,
+    /*@RequestMapping(path = "/sign-up", method = RequestMethod.POST,
     consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<SignUpResponse> signUp(@RequestBody SignUpRequest request){
 
+    }*/
+
+    @RequestMapping(path = "/", method = RequestMethod.GET)
+    public String index(){
+        return "H3ll0 W0r1d!";
     }
 }

@@ -2,17 +2,19 @@ package com.ashuz.ashuzimagehoster.entity;
 
 import org.apache.commons.lang3.ObjectUtils;
 
+import javax.annotation.Nullable;
 import javax.enterprise.inject.Default;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
 @Table(name = "USERS", schema = "imagehoster")
-public class UserEntity {
+public class UserEntity implements Serializable {
 
     @Id
     @Column(name ="ID")
@@ -60,7 +62,6 @@ public class UserEntity {
     private String mobilePhone;
     
     @Column(name="LAST_LOGIN_AT")
-    @Null
     private Timestamp lastLoginAt;
 
     @Override
