@@ -1,5 +1,7 @@
 package com.ashuz.ashuzimagehoster.entity;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.ObjectUtils;
 
 import javax.annotation.Nullable;
@@ -11,24 +13,21 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Objects;
+import java.util.UUID;
 
 @Entity
 @Table(name = "USERS", schema = "imagehoster")
+@Getter
+@Setter
 public class UserEntity implements Serializable {
 
     @Id
     @Column(name ="ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-    @Column(name="UUID")
-    @Size(max=36)
-    @NotNull
-    private String uuid;
+    private UUID id;
 
     @Column(name="ROLE")
     @Size(max=36)
-    @NotNull
     private String role;
 
     @Column(name="EMAIL", unique = true)
@@ -43,7 +42,6 @@ public class UserEntity implements Serializable {
 
     @Column(name="SALT")
     @Size(max=200)
-    @NotNull
     private String salt;
 
     @Column(name="FIRST_NAME")
@@ -53,12 +51,10 @@ public class UserEntity implements Serializable {
 
     @Column(name="LAST_NAME")
     @Size(max=50)
-    @NotNull
     private String lastName;
 
     @Column(name="MOBILE_PHONE")
     @Size(max=50)
-    @NotNull
     private String mobilePhone;
     
     @Column(name="LAST_LOGIN_AT")
@@ -69,19 +65,18 @@ public class UserEntity implements Serializable {
         if (this == o) return true;
         if (!(o instanceof UserEntity)) return false;
         UserEntity that = (UserEntity) o;
-        return uuid.equals(that.uuid);
+        return id.equals(that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(uuid);
+        return Objects.hash(id);
     }
 
     @Override
     public String toString() {
         return "UserEntity{" +
                 "id=" + id +
-                ", uuid='" + uuid + '\'' +
                 ", role='" + role + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
